@@ -1,6 +1,22 @@
 # Physics-Informed Neural Network (PINN) for Solving Elastic Bar DE
 
-This repo is based on the work of [Kollmansberger et al.](https://link.springer.com/book/10.1007/978-3-030-76587-3), pages 60-63, where they attempt to solve the following equation: $$ f:= \frac{\text{d}}{\text{d}x} \left(EA\frac{\text{d}u}{\text{d}x} \right) + p = 0$$ subject to the Dirichlet boundary conditions $$u(x=0) = u(x=1) = 0$$ where $u$ is displacement of the bar. We use a trial solution of the form $$u(x) = \text{sin}(2 \pi x)$$ which implies an inhomogeneous term of the form $$p = 4\pi^2 \text{sin}(2 \pi x)$$ and a loss function $$J = \frac{1}{N_b} \sum_{i=1}^{N_b} \left| u_{NN}(x_b^i; \theta) - u(x_b^i)\right|^2 + \frac{1}{N_f} \sum_{i=1}^{N_f} \left| f(x_f^i) \right|^2$$ where the two terms encode the boundary conditions' residual and the $\text{PDE}$ residual, respectively. Note that we are stuck in the *static* case where we have no explicit time dependence, and only one dependent variable, $x$.
+This repo is based on the work of [Kollmansberger et al.](https://link.springer.com/book/10.1007/978-3-030-76587-3), pages 60-63, where they attempt to solve the following equation: 
+
+$ f:= \frac{\text{d}}{\text{d}x} \left(EA\frac{\text{d}u}{\text{d}x} \right) + p = 0$
+
+subject to the Dirichlet boundary conditions 
+
+$u(x=0) = u(x=1) = 0$
+
+where $u$ is displacement of the bar. We use a trial solution of the form 
+
+$u(x) = \text{sin}(2 \pi x)$ which implies an inhomogeneous term of the form $p = 4\pi^2 \text{sin}(2 \pi x)$
+
+and a loss function 
+
+$J = \frac{1}{N_b} \sum_{i=1}^{N_b} \left| u_{NN}(x_b^i; \theta) - u(x_b^i)\right|^2 + \frac{1}{N_f} \sum_{i=1}^{N_f} \left| f(x_f^i) \right|^2$ 
+
+where the two terms encode the boundary conditions' residual and the $\text{PDE}$ residual, respectively. Note that we are stuck in the *static* case where we have no explicit time dependence, and only one dependent variable, $x$.
 
 Note that most of the code implementation is original, though I have borrowed some steps (as appropriate) from the original Kollmansberger book (referenced above).
 
