@@ -2,7 +2,7 @@
 
 This repo is based on the work of [Kollmansberger et al.](https://link.springer.com/book/10.1007/978-3-030-76587-3), pages 60-63, where they attempt to solve the following equation: 
 
-$ f:= \frac{\text{d}}{\text{d}x} \left(EA\frac{\text{d}u}{\text{d}x} \right) + p = 0$
+$ f:= \frac{\text{d}}{\text{d}x} (EA\frac{\text{d}u}{\text{d}x}) + p = 0$
 
 subject to the Dirichlet boundary conditions 
 
