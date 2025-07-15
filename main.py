@@ -34,10 +34,18 @@ def main():
     xplot_cont = np.linspace(0, 1, 100)
     u_analytic = np.sin(2*np.pi*xplot_cont)
 
+    # Allow some fancy LATEX typesetting
+    plt.rcParams.update({
+    "text.usetex": True,
+    "font.family": "sans-serif",
+    "font.sans-serif": "Helvetica",
+    })
     plt.plot(xplot_cont, u_analytic, color='b', label='ground-truth')
     plt.scatter(xplot_disc, u_pred, linestyle='dashed', color='r', label='predicted')
     plt.legend()
-    plt.title(f"Model predictions after {n_epochs} steps.")
+    plt.ylabel(r"$u$")
+    plt.xlabel(r"$x$")
+    plt.title(f"Model predictions after {n_epochs} epochs of training.")
     plt.show()
 
 

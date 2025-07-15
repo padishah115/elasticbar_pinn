@@ -4,7 +4,6 @@ import torch.optim as optim
 def train(n_epochs, model, optimizer:optim.Optimizer, x, EA, p, u0, u1):
 
     for epoch in range(1, n_epochs+1):
-        print(epoch)
         
         f = model.f(x, EA, p)
 
@@ -23,4 +22,5 @@ def train(n_epochs, model, optimizer:optim.Optimizer, x, EA, p, u0, u1):
         loss.backward()
         optimizer.step()
 
-        print(loss)
+        if epoch == 1 or epoch % 1000 == 0:
+            print(f"Loss at epoch {epoch}: {loss.item():.4f}")

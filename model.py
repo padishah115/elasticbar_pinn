@@ -19,13 +19,13 @@ class Model(nn.Module):
 
         super().__init__()
 
+        torch.manual_seed(42)
+
         # Architecture
         self.fc1 = nn.Linear(in_features=input_dims, out_features=hidden_dims)
         self.activation = F.tanh
         self.fc2 = nn.Linear(in_features=hidden_dims, out_features=output_dims)
 
-        # Loss criterion
-        self.criterion = F.mse_loss
 
     def forward(self, x:torch.tensor)->torch.Tensor:
         """Model forwards pass.
@@ -61,7 +61,7 @@ class Model(nn.Module):
 
         return dydx
 
-    def f(self, x, EA, p):
+    def f(self, x:torch.Tensor, EA, p):
         """Function for calculating f, as defined to be the differential equation.
         
         Parameters:
